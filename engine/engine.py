@@ -14,7 +14,7 @@ class Engine:
         relative_score = self.context.score * (1 if self.context.initiative_at_side_a else -1)
         world_event_dice = Dice(100, modifier=relative_score)
 
-        event = choose_with_ranges(WAR_EVENT_TABLE, world_event_dice)
+        event = choose_with_ranges(WAR_EVENT_TABLE, world_event_dice, ignore_limits=True)
         return event.apply(self.context)
 
     def apply_outcome(self, outcome: Outcome):
@@ -31,3 +31,10 @@ class Engine:
         outcome = self.dispatch_event()
         self.apply_outcome(outcome)
         self.logger.log_outcome(outcome)
+
+    def simulate(self):
+        """
+        Simulates until there is a clear winner or a piece offer occurs
+        """
+        while -100 < self.context.score < 100:
+            self.progress_by_one_turn()
