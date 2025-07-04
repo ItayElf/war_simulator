@@ -10,6 +10,11 @@ class EngineLogger:
         initiative_text = ", flipping the initiative" if outcome.did_initiative_change else ""
         self.log(f"{outcome.description}{initiative_text}")
 
+    def log_peace(self, outcome: str):
+        winner = self.context.side_a if self.context.score > 0 else self.context.side_b
+        article = "an" if outcome[0].lower() in "aeiou" else "a"
+        self.log(f"{winner} won after {self.context.days_passed} days, securing {article} {outcome}")
+
     def log(self, message: str):
         print(
             f"[{'*' if self.context.initiative_at_side_a else ''}{self.context.side_a}]"

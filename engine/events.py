@@ -29,3 +29,15 @@ WAR_EVENT_TABLE: Dict[range, Event] = {
     range(115, 120): PositiveEvent("Diplomatic breakthrough"),
     range(120, 126): PositiveEvent("Crisis Averted"),
 }
+
+PEACE_OUTCOME_TABLE: Dict[range, str] = {
+    range(1, 31): "stalemate: no side gains; both sides withdraw.",
+    range(31, 61): "minor concessions: small territorial or trade shifts.",
+    range(61, 91): "uneasy truce: tensions remain; limited restructuring.",
+    range(91, 121): "favorable trade terms: winner gains economic control.",
+    range(121, 141): "regional advantage: winner gets control over contested zone.",
+    range(141, 161): "political shift: loser's alliances or leadership weaken.",
+    range(161, 176): "strategic victory: winner secures major war goals.",
+    range(176, 191): "dominant peace: victorious side imposes near-total terms.",
+    range(191, 201): "decisive victory: winner gets complete political, military, and symbolic triumph.",
+}
