@@ -18,7 +18,7 @@ class Dice:
 
 def choose_with_ranges(ranges: Dict[range, _T], dice: Optional[Dice] = None) -> _T:
     if dice is None:
-        dice = Dice(max(r.stop for r in ranges))
+        dice = Dice(max(r.stop for r in ranges) - 1)
 
     result = dice.roll()
     for number_range in ranges:
