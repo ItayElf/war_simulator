@@ -7,4 +7,5 @@ class Context:
     side_b: str
     score: int = 0
 
+    days_passed: int = field(kw_only=True, default=0)
     initiative_at_side_a: bool = field(kw_only=True, default=True)
