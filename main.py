@@ -5,7 +5,7 @@ from engine.engine import Engine
 def main():
     context = Context("Attacker", "Defender")
     engine = Engine(context)
-    engine.logger.log(engine.dispatch_event().description)
+    engine.progress_by_one_turn()
 
 
 if __name__ == "__main__":
