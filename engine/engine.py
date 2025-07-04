@@ -9,9 +9,9 @@ from random_utils import Dice, choose_with_ranges
 
 
 class Engine:
-    def __init__(self, context: Context) -> None:
+    def __init__(self, context: Context, logger: EngineLogger) -> None:
         self.context = context
-        self.logger = EngineLogger(context)
+        self.logger = logger
 
     def dispatch_event(self) -> Outcome:
         relative_score = self.context.score * (1 if self.context.initiative_at_side_a else -1)
