@@ -9,13 +9,13 @@ from random_utils import Dice, choose_with_ranges
 
 _BATTLE_PROGRESS_TABLE = {
     range(1, 2): ("catastrophic collapse", -3, 100),
-    range(2, 4): ("collapse", -2, 100),
-    range(4, 7): ("major setback", -1, 50),
-    range(7, 11): ("minor setback", -1, 25),
-    range(11, 14): ("stalemate", 0, 0),
-    range(14, 18): ("minor advance", 1, 0),
-    range(18, 21): ("major advance", 1, 0),
-    range(21, 23): ("critical push", 2, 0),
+    range(2, 5): ("collapse", -2, 100),
+    range(5, 8): ("major setback", -1, 50),
+    range(8, 12): ("minor setback", -1, 25),
+    range(12, 13): ("stalemate", 0, 0),
+    range(13, 17): ("minor advance", 1, 0),
+    range(17, 20): ("major advance", 1, 0),
+    range(20, 23): ("critical push", 2, 0),
     range(23, 25): ("crushing blow", 3, 0),
 }
 

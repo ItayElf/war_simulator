@@ -15,7 +15,7 @@ class Engine:
 
     def dispatch_event(self) -> Outcome:
         relative_score = self.context.score * (1 if self.context.initiative_at_side_a else -1)
-        world_event_dice = Dice(100, modifier=relative_score)
+        world_event_dice = Dice(100, modifier=relative_score // 2)
 
         event = choose_with_ranges(WAR_EVENT_TABLE, world_event_dice, ignore_limits=True)
         return event.apply(self.context)

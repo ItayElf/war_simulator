@@ -1,4 +1,4 @@
-# War Simulation Engine v0.1.1
+# War Simulation Engine v0.1.2
 
 > A narrative-first engine for dynamic world events, focused on simulating wars, battles, and their narrative consequences.
 > 
@@ -26,7 +26,7 @@ Represents the overall momentum of the war.
 # Simulation Flow
 
 - **Start at War Score 0**, with one faction holding **initiative**.
-- The side with initiative rolls **1d100 ± the current War Score** (Side B multiplies the score by -1).
+- The side with initiative rolls **1d100 ± half the current War Score**, rounded down (Side B multiplies the score by -1).
 - Compare the result to the [**War Event Table**](#war-event-table) to determine what happens:
 - **Apply changes** to war score, battle scores, or time passed.
 - If a **negative outcome** occurs, initiative may flip, and a **Peace Offer** might happen based on the number of days that have passed**.**
@@ -40,9 +40,8 @@ Represents the overall momentum of the war.
 | –20 to –16 | Civil unrest emerges         | [Negative Event Table](#negative-event-table)   |
 | –15 to –11 | Internal leadership conflict | [Negative Event Table](#negative-event-table)   |
 | –10 to –6  | Supply disruption            | [Negative Event Table](#negative-event-table)   |
-| -5 to 5    | Battle progresses            | [Battle Progress Table](#battle-progress-table) |
-| 5 to 9     | Strategic disagreement       | [Negative Event Table](#negative-event-table)   |
-| 10 to 14   | Battle starts                | [Battle Starts Table](#battle-start-table)      |
+| -5 to 9    | Battle progresses            | [Battle Progress Table](#battle-progress-table) |
+| 10 to 14   | Strategic disagreement       | [Negative Event Table](#negative-event-table)   |
 | 15 to 19   | Public dissent grows         | [Negative Event Table](#negative-event-table)   |
 | 20 to 24   | Religious tensions rise      | [Negative Event Table](#negative-event-table)   |
 | 25 to 29   | Foreign sanctions imposed    | [Negative Event Table](#negative-event-table)   |
@@ -54,10 +53,9 @@ Represents the overall momentum of the war.
 | 70 to 74   | Cultural unity strengthens   | [Positive Event Table](#positive-event-table)   |
 | 75 to 79   | Enemy official defects       | [Positive Event Table](#positive-event-table)   |
 | 80 to 84   | New region joins the cause   | [Positive Event Table](#positive-event-table)   |
-| 85 to 94   | Battle progresses            | [Battle Progress Table](#battle-progress-table) |
-| 95 to 99   | Intelligence breakthrough    | [Positive Event Table](#positive-event-table)   |
-| 100 to 104 | Public morale surges         | [Positive Event Table](#positive-event-table)   |
-| 105 to 109 | Strategic region secured     | [Positive Event Table](#positive-event-table)   |
+| 85 to 99   | Battle progresses            | [Battle Progress Table](#battle-progress-table) |
+| 100 to 104 | Intelligence breakthrough    | [Positive Event Table](#positive-event-table)   |
+| 105 to 109 | Public morale surges         | [Positive Event Table](#positive-event-table)   |
 | 110 to 114 | New leader rises             | [Positive Event Table](#positive-event-table)   |
 | 115 to 119 | Diplomatic breakthrough      | [Positive Event Table](#positive-event-table)   |
 | 120 to 125 | Crisis Averted               | [Positive Event Table](#positive-event-table)   |
@@ -116,13 +114,13 @@ Represents the overall momentum of the war.
 | Roll  | Outcome               | Δ Battle Score | Initiative Flip? |
 | ----- | --------------------- | -------------- | ---------------- |
 | ≤1    | Catastrophic Collapse | –3             | Yes              |
-| 2–3   | Collapse              | –2             | Yes              |
-| 4–6   | Major Setback         | –1             | 50% chance       |
-| 7–10  | Minor Setback         | –1             | 25% chance       |
-| 11–13 | Stalemate             | 0              | No               |
-| 14–17 | Minor Advance         | +1             | No               |
-| 18–20 | Major Advance         | +1             | No               |
-| 21–22 | Critical Push         | +2             | No               |
+| 2–4   | Collapse              | –2             | Yes              |
+| 5–7   | Major Setback         | –1             | 50% chance       |
+| 8–11  | Minor Setback         | –1             | 25% chance       |
+| 12    | Stalemate             | 0              | No               |
+| 13–16 | Minor Advance         | +1             | No               |
+| 17–19 | Major Advance         | +1             | No               |
+| 20–22 | Critical Push         | +2             | No               |
 | 23–24 | Crushing Blow         | +3             | No               |
 | 25+   | Annihilation (opt.)   | +3             | No               |
 
