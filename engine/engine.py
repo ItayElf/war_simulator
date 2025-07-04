@@ -46,8 +46,35 @@ class Engine:
         """
         Simulates until there is a clear winner or a piece offer occurs
         """
-        while -100 < self.context.score < 100:
-            self.progress_by_one_turn()
+        is_peace = False
+        while (-100 < self.context.score < 100) and not is_peace:
+            outcome = self.progress_by_one_turn()
+
+            if outcome.did_initiative_change and self._initiative_at_dominant:
+                is_peace = self._is_peace_offer_occurs()
 
         outcome = self.get_peace_outcome()
         self.logger.log_peace(outcome)
+
+    def _is_peace_offer_occurs(self) -> bool:
+        peace_chance = {
+            range(1, 3): self.context.days_passed > 1000,
+            range(3, 5): self.context.days_passed > 500,
+            range(5, 7): self.context.days_passed > 250,
+            range(7, 9): self.context.days_passed > 100,
+            range(9, 11): self.context.days_passed > 50,
+        }
+        return choose_with_ranges(peace_chance)
+
+    @property
+    def _initiative_at_dominant(self) -> bool:
+        """
+        Returns true if the side who's closer to victory has the initiative
+        """
+        if self.context.initiative_at_side_a and self.context.score > 0:
+            return True
+
+        if not self.context.initiative_at_side_a and self.context.score < 0:
+            return True
+
+        return False
