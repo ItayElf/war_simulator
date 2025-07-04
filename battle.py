@@ -1,0 +1,28 @@
+from dataclasses import dataclass
+from enum import Enum
+
+
+class BattleSeverity(Enum):
+    SKIRMISH = "skirmish"
+    ENGAGEMENT = "engagement"
+    CAMPAIGN = "campaign"
+    DECISIVE_CLASH = "decisive clash"
+
+
+_BATTLE_SCORE_THRESHOLD = {
+    BattleSeverity.SKIRMISH: 3,
+    BattleSeverity.ENGAGEMENT: 6,
+    BattleSeverity.CAMPAIGN: 10,
+    BattleSeverity.DECISIVE_CLASH: 15,
+}
+
+
+@dataclass
+class Battle:
+    name: str
+    score: int
+    severity: BattleSeverity
+
+    @property
+    def is_active(self) -> bool:
+        return abs(self.score) < _BATTLE_SCORE_THRESHOLD[self.severity]

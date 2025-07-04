@@ -16,10 +16,13 @@ class EngineLogger:
         self.log(f"{winner} won after {self.context.days_passed} days, securing {article} {outcome}")
 
     def log(self, message: str):
+        active_battles = [b for b in self.context.battles if b.is_active]
+        active_battles_text = f", {len(active_battles)}B"
+
         print(
             f"[{'*' if self.context.initiative_at_side_a else ''}{self.context.side_a}]"
             f"[{self.context.score:+d}]"
             f"[{'*' if not self.context.initiative_at_side_a else ''}{self.context.side_b}]"
-            f"[{self.context.days_passed}D]"
+            f"[{self.context.days_passed}D{active_battles_text}]"
             f" {message}"
         )
