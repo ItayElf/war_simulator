@@ -1,4 +1,5 @@
 from context import Context
+from engine.engine_logger import EngineLogger
 from engine.events import WAR_EVENT_TABLE
 from outcome import Outcome
 from random_utils import Dice, choose_with_ranges
@@ -7,6 +8,7 @@ from random_utils import Dice, choose_with_ranges
 class Engine:
     def __init__(self, context: Context) -> None:
         self.context = context
+        self.logger = EngineLogger(context)
 
     def dispatch_event(self) -> Outcome:
         relative_score = self.context.score * (1 if self.context.initiative_at_side_a else -1)

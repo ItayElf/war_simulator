@@ -5,7 +5,7 @@ from engine.engine import Engine
 def main():
     context = Context("Attacker", "Defender")
     engine = Engine(context)
-    print(engine.dispatch_event())
+    engine.logger.log(engine.dispatch_event().description)
 
 
 if __name__ == "__main__":
