@@ -20,11 +20,11 @@ SEVERITY_RANGES = {
 }
 
 SEVERITY_SCORE = {
-    Severity.MINOR: 3,
-    Severity.MODERATE: 5,
-    Severity.STRONG: 10,
-    Severity.MAJOR: 15,
-    Severity.TRANSFORMATIVE: 20,
+    Severity.MINOR: 1,
+    Severity.MODERATE: 3,
+    Severity.STRONG: 5,
+    Severity.MAJOR: 10,
+    Severity.TRANSFORMATIVE: 15,
 }
 
 SEVERITY_DAYS_DICE = {

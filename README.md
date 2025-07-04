@@ -1,4 +1,4 @@
-# War Simulation Engine v0.1.0
+# War Simulation Engine v0.1.1
 
 > A narrative-first engine for dynamic world events, focused on simulating wars, battles, and their narrative consequences.
 > 
@@ -40,19 +40,21 @@ Represents the overall momentum of the war.
 | –20 to –16 | Civil unrest emerges         | [Negative Event Table](#negative-event-table)   |
 | –15 to –11 | Internal leadership conflict | [Negative Event Table](#negative-event-table)   |
 | –10 to –6  | Supply disruption            | [Negative Event Table](#negative-event-table)   |
-| –5 to –1   | Strategic disagreement       | [Negative Event Table](#negative-event-table)   |
-| 0 to 4     | Propaganda mishap            | [Negative Event Table](#negative-event-table)   |
-| 5 to 9     | Public dissent grows         | [Negative Event Table](#negative-event-table)   |
-| 10 to 14   | Religious tensions rise      | [Negative Event Table](#negative-event-table)   |
-| 15 to 19   | Foreign sanctions imposed    | [Negative Event Table](#negative-event-table)   |
-| 20 to 24   | Enemy infiltration succeeds  | [Negative Event Table](#negative-event-table)   |
-| 25 to 34   | Battle starts                | [Battle Starts Table](#battle-start-table)      |
-| 35 to 59   | Battle progresses            | [Battle Progress Table](#battle-progress-table) |
-| 60 to 74   | Battle ends                  | [Battle End Table](#battle-end-table)           |
-| 75 to 79   | Foreign aid arrives          | [Positive Event Table](#positive-event-table)   |
-| 80 to 84   | Cultural unity strengthens   | [Positive Event Table](#positive-event-table)   |
-| 85 to 89   | Enemy official defects       | [Positive Event Table](#positive-event-table)   |
-| 90 to 94   | New region joins the cause   | [Positive Event Table](#positive-event-table)   |
+| -5 to 5    | Battle progresses            | [Battle Progress Table](#battle-progress-table) |
+| 5 to 9     | Strategic disagreement       | [Negative Event Table](#negative-event-table)   |
+| 10 to 14   | Battle starts                | [Battle Starts Table](#battle-start-table)      |
+| 15 to 19   | Public dissent grows         | [Negative Event Table](#negative-event-table)   |
+| 20 to 24   | Religious tensions rise      | [Negative Event Table](#negative-event-table)   |
+| 25 to 29   | Foreign sanctions imposed    | [Negative Event Table](#negative-event-table)   |
+| 30 to 34   | Enemy infiltration succeeds  | [Negative Event Table](#negative-event-table)   |
+| 35 to 44   | Battle starts                | [Battle Starts Table](#battle-start-table)      |
+| 45 to 59   | Battle progresses            | [Battle Progress Table](#battle-progress-table) |
+| 60 to 64   | Battle ends                  | [Battle End Table](#battle-end-table)           |
+| 65 to 69   | Foreign aid arrives          | [Positive Event Table](#positive-event-table)   |
+| 70 to 74   | Cultural unity strengthens   | [Positive Event Table](#positive-event-table)   |
+| 75 to 79   | Enemy official defects       | [Positive Event Table](#positive-event-table)   |
+| 80 to 84   | New region joins the cause   | [Positive Event Table](#positive-event-table)   |
+| 85 to 94   | Battle progresses            | [Battle Progress Table](#battle-progress-table) |
 | 95 to 99   | Intelligence breakthrough    | [Positive Event Table](#positive-event-table)   |
 | 100 to 104 | Public morale surges         | [Positive Event Table](#positive-event-table)   |
 | 105 to 109 | Strategic region secured     | [Positive Event Table](#positive-event-table)   |
@@ -66,21 +68,21 @@ Represents the overall momentum of the war.
 
 | Roll (1d10) | Severity Level       | Score Increase | Time Pass   |
 | ----------- | -------------------- | -------------- | ----------- |
-| 1–3         | Minor gain           | +3             | 1d10 days   |
-| 4–6         | Moderate development | +5             | 1d10+2 days |
-| 7–8         | Strong advantage     | +10            | 1d10+4 days |
-| 9           | Major breakthrough   | +15            | 1d10+6 days |
-| 10          | Transformative shift | +20            | 1d10+8 days |
+| 1–3         | Minor gain           | +1             | 1d10 days   |
+| 4–6         | Moderate development | +3             | 1d10+2 days |
+| 7–8         | Strong advantage     | +5             | 1d10+4 days |
+| 9           | Major breakthrough   | +10            | 1d10+6 days |
+| 10          | Transformative shift | +15            | 1d10+8 days |
 
 ##### **Negative Event Table**
 
 | Roll (1d10) | Severity Level       | Score Decrease | Initiative Flip? | Time Pass   |
 | ----------- | -------------------- | -------------- | ---------------- | ----------- |
-| 1–3         | Minor setback        | –3             | No               | 1d10 days   |
-| 4–6         | Moderate disruption  | –5             | No               | 1d10+2 days |
-| 7–8         | Major collapse       | –10            | Yes              | 1d10+4 days |
-| 9           | Strategic unraveling | –15            | Yes              | 1d10+6 days |
-| 10          | Systemic catastrophe | –25            | Yes              | 1d10+8 days |
+| 1–3         | Minor setback        | -1             | No               | 1d10 days   |
+| 4–6         | Moderate disruption  | –3             | No               | 1d10+2 days |
+| 7–8         | Major collapse       | –5             | Yes              | 1d10+4 days |
+| 9           | Strategic unraveling | –10            | Yes              | 1d10+6 days |
+| 10          | Systemic catastrophe | –15            | Yes              | 1d10+8 days |
 
 # Battles
 
