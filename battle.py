@@ -22,6 +22,7 @@ class Battle:
     name: str
     score: int
     severity: BattleSeverity
+    started_at: int  # After how many days did the battle started
 
     @property
     def is_active(self) -> bool:

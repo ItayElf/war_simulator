@@ -90,6 +90,7 @@ Represents the overall momentum of the war.
 - Roll **1d10** on the **Battle Severity Table** to determine the battle’s scale.
 - Create a new battle track with a [**Battle Score**](#battle-start-table) starting at 0 (range –10 to 10).
 - The battle will progress by rolling on the [**Battle Progress Table**](#battle-progress-table) (when a **Battle Progress** event is triggered) until a battle end occurs.
+- **Battle Start** does not increase the days passed.
 
 ##### **Battle Start Table**
 

@@ -1,3 +1,4 @@
+from battle import Battle
 from context import Context
 from engine.engine_logger import EngineLogger
 from engine.events import PEACE_OUTCOME_TABLE, WAR_EVENT_TABLE
@@ -23,6 +24,9 @@ class Engine:
 
         if outcome.did_initiative_change:
             self.context.initiative_at_side_a = not self.context.initiative_at_side_a
+
+        if outcome.battle_change is not None:
+            self._apply_battle(outcome.battle_change)
 
     def progress_by_one_turn(self) -> Outcome:
         """
@@ -65,6 +69,14 @@ class Engine:
             range(9, 11): self.context.days_passed > 50,
         }
         return choose_with_ranges(peace_chance)
+
+    def _apply_battle(self, battle_update: Battle):
+        for battle in self.context.battles:
+            if battle.name == battle_update.name:
+                battle.score = battle_update.score
+                return
+
+        self.context.battles.append(battle_update)
 
     @property
     def _initiative_at_dominant(self) -> bool:

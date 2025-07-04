@@ -17,7 +17,7 @@ class EngineLogger:
 
     def log(self, message: str):
         active_battles = [b for b in self.context.battles if b.is_active]
-        active_battles_text = f", {len(active_battles)}B"
+        active_battles_text = f", {len(active_battles)}B" if active_battles else ""
 
         print(
             f"[{'*' if self.context.initiative_at_side_a else ''}{self.context.side_a}]"
