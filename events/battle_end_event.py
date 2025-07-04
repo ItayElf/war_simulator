@@ -1,18 +1,11 @@
 from copy import deepcopy
 import random
-from battle import Battle, BattleSeverity
+from battle import SCORE_INCREASE_FROM_WIN, Battle
 from context import Context
 from events.event import Event
 from exceptions import RerollException
 from outcome import Outcome
 
-
-_SCORE_INCREASE_FROM_WIN = {
-    BattleSeverity.SKIRMISH: 5,
-    BattleSeverity.ENGAGEMENT: 10,
-    BattleSeverity.CAMPAIGN: 15,
-    BattleSeverity.DECISIVE_CLASH: 20,
-}
 
 _BATTLE_END_REASONS = [
     "third party intervention",
@@ -38,13 +31,19 @@ class BattleEndEvent(Event):
 
         battle = deepcopy(random.choice(active_battles))
         battle.is_active = False
+        score_change = self._get_score_change(battle)
+        description = (
+            f"Battle {battle.name!r} was ended after {context.days_passed - battle.started_at} "
+            f"days due to {random.choice(_BATTLE_END_REASONS)}"
+        )
+
+        if score_change:
+            winner = context.side_a if battle.score > 0 else context.side_b
+            description += f". This is considered as a win for {winner}."
 
         return Outcome(
-            (
-                f"Battle {battle.name!r} was ended after {context.days_passed - battle.started_at}"
-                f" days due to {random.choice(_BATTLE_END_REASONS)}"
-            ),
-            self._get_score_change(battle),
+            description,
+            score_change,
             days_passed=0,
             did_initiative_change=False,
             battle_change=battle,
@@ -55,4 +54,4 @@ class BattleEndEvent(Event):
         if battle.score < BattleEndEvent._SCORE_THRESHOLD:
             return 0
 
-        return _SCORE_INCREASE_FROM_WIN[battle.severity]
+        return SCORE_INCREASE_FROM_WIN[battle.severity]

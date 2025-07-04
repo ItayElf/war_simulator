@@ -13,7 +13,7 @@ class PositiveEvent(Event):
     def apply(self, context: Context) -> Outcome:
         severity = self._get_severity()
         return Outcome(
-            f"{self.name} ({severity.name.title()})",
+            f"{self.name} ({severity.name.title()}).",
             SEVERITY_SCORE[severity],
             SEVERITY_DAYS_DICE[severity].roll(),
             did_initiative_change=False,

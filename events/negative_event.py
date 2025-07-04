@@ -12,8 +12,11 @@ class NegativeEvent(Event):
 
     def apply(self, context: Context) -> Outcome:
         severity = self._get_severity()
+        did_initiative_change = self._did_initiative_change(severity)
+
+        initiative_text = ", flipping the initiative" if did_initiative_change else ""
         return Outcome(
-            f"{self.name} ({severity.name.title()})",
+            f"{self.name} ({severity.name.title()}){initiative_text}.",
             SEVERITY_SCORE[severity] * (-1),
             SEVERITY_DAYS_DICE[severity].roll(),
             self._did_initiative_change(severity),

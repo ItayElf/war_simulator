@@ -9,11 +9,11 @@ class BattleSeverity(Enum):
     DECISIVE_CLASH = "decisive clash"
 
 
-_BATTLE_SCORE_THRESHOLD = {
-    BattleSeverity.SKIRMISH: 3,
-    BattleSeverity.ENGAGEMENT: 6,
-    BattleSeverity.CAMPAIGN: 10,
-    BattleSeverity.DECISIVE_CLASH: 15,
+SCORE_INCREASE_FROM_WIN = {
+    BattleSeverity.SKIRMISH: 5,
+    BattleSeverity.ENGAGEMENT: 10,
+    BattleSeverity.CAMPAIGN: 15,
+    BattleSeverity.DECISIVE_CLASH: 20,
 }
 
 
