@@ -1,7 +1,9 @@
+from contextlib import suppress
 from battle import Battle
 from context import Context
 from engine.engine_logger import EngineLogger
 from engine.events import PEACE_OUTCOME_TABLE, WAR_EVENT_TABLE
+from exceptions import RerollException
 from outcome import Outcome
 from random_utils import Dice, choose_with_ranges
 
@@ -31,11 +33,14 @@ class Engine:
     def progress_by_one_turn(self) -> Outcome:
         """
         Dispatches and applies one event
+        If a reroll exception occurs, tries and dispatch another event
         """
-        outcome = self.dispatch_event()
-        self.apply_outcome(outcome)
-        self.logger.log_outcome(outcome)
-        return outcome
+        while True:
+            with suppress(RerollException):
+                outcome = self.dispatch_event()
+                self.apply_outcome(outcome)
+                self.logger.log_outcome(outcome)
+                return outcome
 
     def get_peace_outcome(self) -> str:
         """
@@ -74,6 +79,7 @@ class Engine:
         for battle in self.context.battles:
             if battle.name == battle_update.name:
                 battle.score = battle_update.score
+                battle.is_active = battle_update.is_active
                 return
 
         self.context.battles.append(battle_update)

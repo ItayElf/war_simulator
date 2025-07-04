@@ -1,4 +1,5 @@
 from typing import Dict
+from events.battle_end_event import BattleEndEvent
 from events.battle_start_event import BattleStartEvent
 from events.event import Event
 from events.negative_event import NegativeEvent
@@ -18,7 +19,7 @@ WAR_EVENT_TABLE: Dict[range, Event] = {
     range(20, 25): NegativeEvent("Enemy infiltration succeeds"),
     range(25, 35): BattleStartEvent(),
     range(35, 60): NegativeEvent("Battle progresses"),
-    range(60, 75): NegativeEvent("Battle ends"),
+    range(60, 75): BattleEndEvent(),
     range(75, 80): PositiveEvent("Foreign aid arrives"),
     range(80, 85): PositiveEvent("Cultural unity strengthens"),
     range(85, 90): PositiveEvent("Enemy official defects"),

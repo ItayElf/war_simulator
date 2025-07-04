@@ -23,7 +23,4 @@ class Battle:
     score: int
     severity: BattleSeverity
     started_at: int  # After how many days did the battle started
-
-    @property
-    def is_active(self) -> bool:
-        return abs(self.score) < _BATTLE_SCORE_THRESHOLD[self.severity]
+    is_active: bool = True
